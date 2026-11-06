@@ -1,0 +1,30 @@
+# Flutter / Dart
+app/.dart_tool/
+app/.flutter-plugins
+app/.flutter-plugins-dependencies
+app/build/
+app/.packages
+app/pubspec.lock
+app/android/local.properties
+app/android/.gradle/
+
+# Node / panel
+panel/node_modules/
+panel/.next/
+
+# Entorno y secretos
+.env
+.env.*
+*.key
+*.keystore
+*.jks
+
+# Datos: nunca subir bases reales
+/datos/
+*.csv
+*.xlsx
+
+# Sistema
+.DS_Store
+.idea/
+.vscode/

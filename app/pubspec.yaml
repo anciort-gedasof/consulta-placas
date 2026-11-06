@@ -1,0 +1,25 @@
+name: consulta_placas
+description: App del operador para consultar SOAT y RTM por placa.
+publish_to: "none"
+version: 0.1.0+1
+
+environment:
+  sdk: ">=3.4.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # Pendientes de agregar en sus módulos (ver CLAUDE.md, una dependencia por tarea):
+  # supabase_flutter: cliente del backend
+  # google_mlkit_text_recognition: lectura de placa en el teléfono
+  # camera: vista de cámara
+  # geolocator: ubicación (solo se envía; se guarda únicamente si hay coincidencia)
+  # url_launcher: abrir la consulta oficial (plan B) y WhatsApp
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
