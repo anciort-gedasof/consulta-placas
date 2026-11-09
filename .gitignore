@@ -28,3 +28,6 @@ panel/.next/
 .DS_Store
 .idea/
 .vscode/
+backend/.dev_db/
+panel/next-env.d.ts
+panel/*.tsbuildinfo

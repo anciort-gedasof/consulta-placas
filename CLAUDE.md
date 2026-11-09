@@ -117,6 +117,11 @@ detente y avisa.
 - Backend: `cd backend && ./tests/run_tests.sh` (levanta un PostgreSQL
   temporal, aplica las migraciones y corre las pruebas).
 - App: `cd app && flutter test`.
+- Panel: `backend/dev_db.sh start` y luego `cd panel && npm run dev`.
+  Antes de entregar cambios del panel, `npm run build` sin errores.
+- En el panel, TODA consulta de datos de entidad se filtra por la
+  entidad de la sesión; nunca confíes en un id que venga del formulario
+  sin verificar que pertenece a esa entidad.
 - Las migraciones son numeradas (`backend/migrations/NNN_nombre.sql`) y
   nunca se editan una vez subidas: se agrega una nueva.
 - No agregues dependencias sin decir por qué.

@@ -6,7 +6,7 @@ interés de entidades.
 
 - `backend/` — base de datos PostgreSQL, reglas de vencimiento y consulta.
 - `app/` — app Flutter del operador.
-- `panel/` — panel web (próxima fase).
+- `panel/` — panel web de entidades y agentes (Next.js).
 - `docs/` — especificación.
 
 Instrucciones de desarrollo: ver `CLAUDE.md`.
