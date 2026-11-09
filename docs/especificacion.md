@@ -62,6 +62,26 @@ Versión resumida. La versión completa y editable está en el documento
 Si la autoridad no tiene acceso a la lista, la coincidencia va solo a la
 entidad dueña, como en una lectura comercial.
 
+## Registro de consultas positivas
+
+Toda consulta positiva queda registrada de forma permanente para el
+control de las acciones realizadas.
+
+- **Positiva:** coincidencia con una lista de interés, o, en la consulta
+  comercial, SOAT o RTM vencido o por vencer (vista `consultas_positivas`).
+- **Radicado único** por coincidencia: `CP-AAAA-0000000`.
+- **Inalterable:** placa, fecha, ubicación, operador y agente no se
+  pueden modificar ni borrar.
+- **Bitácora de acciones** (solo se agregan filas): detectada, aviso al
+  agente, actuación del agente, cambio de estado y notas de la entidad,
+  con quién y cuándo.
+- **Vista de control** `registro_positivos`: una fila por radicado con
+  entidad, medida, operativo, operador, agente, estado, última actuación
+  y tiempo entre la detección y la actuación.
+- El registro pertenece a la entidad dueña de la lista. Al terminar un
+  acuerdo, se le entrega completo; su conservación sigue el acuerdo y
+  las tablas de retención documental de la entidad.
+
 ## Datos personales
 
 Ver las reglas de `CLAUDE.md`. Responsable del tratamiento: el cliente o

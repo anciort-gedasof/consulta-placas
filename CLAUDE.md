@@ -72,6 +72,16 @@ detente y avisa.
 11. **Un operativo tiene responsable y soporte.** Agente de autoridad
     activo de la misma entidad, lugar, horario y el acto que lo
     dispone. Fuera de su horario no se puede usar.
+12. **Registro permanente de cada consulta positiva.** Cada coincidencia
+    tiene radicado único (`CP-AAAA-0000000`). Los datos de la detección
+    (placa, fecha, ubicación, operador, agente) no se modifican ni se
+    borran. Toda acción posterior (aviso al agente, actuación,
+    seguimiento de la entidad) se AGREGA a `bitacora_coincidencias`;
+    nunca se reescribe. `consultas`, `auditoria` y la bitácora son de
+    solo adición. No escribas código que borre o edite estos registros,
+    ni migraciones que quiten esas protecciones. El registro es de la
+    entidad dueña de la lista: su conservación y entrega se rigen por el
+    acuerdo con ella y por sus tablas de retención documental.
 
 ## Reglas de negocio
 
