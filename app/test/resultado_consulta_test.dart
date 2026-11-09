@@ -19,6 +19,19 @@ void main() {
     expect(r.requierePlanB, isTrue, reason: 'SOAT sin dato');
   });
 
+  test('lee el aviso al agente en un operativo', () {
+    final r = ResultadoConsulta.desdeJson({
+      'placa': 'OPE123',
+      'registrado': false,
+      'soat': {'estado': 'sin_dato'},
+      'rtm': {'estado': 'sin_dato'},
+      'aviso_enviado': true,
+      'aviso_al_agente': true,
+    });
+    expect(r.avisoEnviado, isTrue);
+    expect(r.avisoAlAgente, isTrue);
+  });
+
   test('el servicio demo replica los estados del prototipo', () async {
     final s = ServicioConsultaDemo(hoy: DateTime(2026, 11, 5));
     expect((await s.consultar('ABC123')).soat.estado, EstadoDocumento.alDia);

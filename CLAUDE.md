@@ -14,6 +14,14 @@ interés** que entregan entidades (por ejemplo, vehículos embargados en
 procesos de cobro coactivo). Si hay coincidencia, se avisa **solo** a la
 entidad dueña de la lista.
 
+En **operativos con autoridad** (Policía o agentes de tránsito), el
+operador lee placas en presencia de un uniformado. El detalle de una
+coincidencia llega solo a la cuenta del agente a cargo, y es el
+uniformado quien aborda al conductor.
+
+**Quién hace qué:** GEDASOF desarrolla el software. Una empresa aliada lo
+comercializa y opera con clientes públicos y privados.
+
 Especificación completa: `docs/especificacion.md`.
 
 ## Estructura
@@ -34,8 +42,11 @@ detente y avisa.
 1. **Las listas de interés nunca viajan al celular.** Viven solo en el
    servidor. La app envía una placa y recibe una respuesta.
 2. **El operador nunca ve el motivo de una coincidencia.** Solo ve
-   "Aviso enviado a una entidad". Nada de "embargado", número de proceso
-   ni nombre de la entidad.
+   "Aviso enviado a una entidad" (o "al agente a cargo" en un operativo).
+   Nada de "embargado", número de proceso ni nombre de la entidad. El
+   detalle solo lo ve el agente responsable del operativo, en su propia
+   cuenta, y solo de listas que su entidad puede ver (dueña o con
+   convenio en `accesos_lista`).
 3. **Cada coincidencia va solo a la entidad dueña de la lista.** Una
    entidad nunca ve listas ni coincidencias de otra.
 4. **Sin rastreo masivo.** La ubicación GPS solo se guarda cuando hay
@@ -51,6 +62,16 @@ detente y avisa.
    registrado.
 8. **Nunca subas datos reales** al repositorio, a pruebas ni a ejemplos.
    Solo datos ficticios.
+9. **Solo el uniformado aborda al conductor.** Ninguna pantalla del
+   operador comercial puede sugerirle detener, retener o confrontar a
+   nadie. Los textos al operador dicen "continúe con normalidad".
+10. **Nuestra base no es fuente oficial.** Lo que mostramos sobre SOAT,
+    RTM o listas es un indicio. Toda pantalla del agente lleva la
+    advertencia de verificar en los sistemas oficiales (RUNT, SIMIT,
+    expediente) antes de cualquier medida.
+11. **Un operativo tiene responsable y soporte.** Agente de autoridad
+    activo de la misma entidad, lugar, horario y el acto que lo
+    dispone. Fuera de su horario no se puede usar.
 
 ## Reglas de negocio
 
@@ -68,6 +89,15 @@ detente y avisa.
 - Alertas al propietario: 30, 7 y 1 día antes (parametrizable).
 - Formato de placa: carro `ABC123`, moto `ABC12D`. Se guarda en
   mayúsculas sin espacios ni guiones.
+
+## Roles
+
+| Rol | Qué ve | Qué hace |
+| --- | --- | --- |
+| `operador_comercial` | Estado de SOAT/RTM, "aviso enviado" | Lee placas, plan B, registra clientes |
+| `agente_autoridad` | Detalle de coincidencias de su operativo | Aborda, registra actuación |
+| Entidad (panel) | Sus listas y sus coincidencias | Carga listas, gestiona casos |
+| Administración del cliente (panel) | Base comercial, usuarios, parámetros | Opera el negocio |
 
 ## Cómo trabajar
 

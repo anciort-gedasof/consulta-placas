@@ -40,5 +40,7 @@ for f in "$DIR"/migrations/*.sql; do
   "${PSQL[@]}" -f "$f"
 done
 
-echo "Pruebas:"
-"${PSQL[@]}" -f "$DIR/tests/pruebas.sql"
+for f in "$DIR"/tests/pruebas*.sql; do
+  echo "Pruebas: $(basename "$f")"
+  "${PSQL[@]}" -f "$f"
+done

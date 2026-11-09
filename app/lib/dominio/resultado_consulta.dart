@@ -48,6 +48,7 @@ class ResultadoConsulta {
     required this.soat,
     required this.rtm,
     required this.avisoEnviado,
+    this.avisoAlAgente = false,
   });
 
   final String placa;
@@ -56,12 +57,17 @@ class ResultadoConsulta {
   final EstadoDeDocumento rtm;
   final bool avisoEnviado;
 
+  /// true si, en un operativo, el detalle se envió al agente a cargo.
+  /// El operador tampoco ve el motivo en este caso.
+  final bool avisoAlAgente;
+
   factory ResultadoConsulta.desdeJson(Map<String, dynamic> json) => ResultadoConsulta(
         placa: json['placa'] as String,
         registrado: json['registrado'] as bool? ?? false,
         soat: EstadoDeDocumento.desdeJson(json['soat'] as Map<String, dynamic>?),
         rtm: EstadoDeDocumento.desdeJson(json['rtm'] as Map<String, dynamic>?),
         avisoEnviado: json['aviso_enviado'] as bool? ?? false,
+        avisoAlAgente: json['aviso_al_agente'] as bool? ?? false,
       );
 
   bool get requierePlanB => !registrado || soat.requiereVerificar || rtm.requiereVerificar;

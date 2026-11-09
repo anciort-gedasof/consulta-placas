@@ -26,7 +26,7 @@ class PantallaResultado extends StatelessWidget {
                 titulo: 'Sin registro en la base',
                 texto: 'Use la consulta oficial (plan B) y guarde el resultado.',
               ),
-            if (resultado.avisoEnviado) const _AvisoEntidad(),
+            if (resultado.avisoEnviado) _AvisoEntidad(alAgente: resultado.avisoAlAgente),
             _TarjetaDocumento(nombre: 'SOAT', estado: resultado.soat),
             _TarjetaDocumento(nombre: 'Revisión técnico-mecánica', estado: resultado.rtm),
             const SizedBox(height: 12),
@@ -123,18 +123,28 @@ class _Aviso extends StatelessWidget {
       );
 }
 
+/// Regla 9 de CLAUDE.md: solo el uniformado aborda al conductor.
 class _AvisoEntidad extends StatelessWidget {
-  const _AvisoEntidad();
+  const _AvisoEntidad({required this.alAgente});
+
+  final bool alAgente;
 
   @override
-  Widget build(BuildContext context) => const Card(
-        color: Color(0xFF14213D),
-        margin: EdgeInsets.only(bottom: 12),
+  Widget build(BuildContext context) => Card(
+        color: const Color(0xFF14213D),
+        margin: const EdgeInsets.only(bottom: 12),
         child: ListTile(
-          leading: Icon(Icons.send_outlined, color: Color(0xFFF2B33D)),
-          title: Text('Aviso enviado a una entidad', style: TextStyle(color: Color(0xFFF7F6F2))),
-          subtitle: Text('Continúe con normalidad. No intervenga el vehículo.',
-              style: TextStyle(color: Color(0xFFC9D3E6))),
+          leading: const Icon(Icons.send_outlined, color: Color(0xFFF2B33D)),
+          title: Text(
+            alAgente ? 'Aviso enviado al agente a cargo' : 'Aviso enviado a una entidad',
+            style: const TextStyle(color: Color(0xFFF7F6F2)),
+          ),
+          subtitle: Text(
+            alAgente
+                ? 'Continúe con normalidad. El agente decide si aborda al conductor.'
+                : 'Continúe con normalidad. No intervenga el vehículo.',
+            style: const TextStyle(color: Color(0xFFC9D3E6)),
+          ),
         ),
       );
 }

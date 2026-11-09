@@ -45,6 +45,23 @@ Versión resumida. La versión completa y editable está en el documento
 - Retiro de una placa: `activo = false`; deja de generar avisos de
   inmediato.
 
+## Operativos con autoridad
+
+1. La autoridad (Policía o tránsito) crea el operativo: agente
+   responsable, lugar, horario y acto que lo dispone.
+2. El operador lee placas con el operativo activo en su app, en
+   presencia del uniformado.
+3. Si hay coincidencia con una lista que la autoridad puede ver (dueña o
+   con convenio), el detalle llega a la cuenta del agente responsable.
+   El operador solo ve "Aviso enviado al agente a cargo".
+4. El uniformado aborda al conductor y verifica en los sistemas
+   oficiales antes de cualquier medida.
+5. El agente registra la actuación: `abordado`, `medida_ejecutada`,
+   `no_detenido`, `sin_actuacion`.
+
+Si la autoridad no tiene acceso a la lista, la coincidencia va solo a la
+entidad dueña, como en una lectura comercial.
+
 ## Datos personales
 
 Ver las reglas de `CLAUDE.md`. Responsable del tratamiento: el cliente o
